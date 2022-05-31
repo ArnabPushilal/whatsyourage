@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}home{% endblock %} {% block
+    content %}
+    
+    <form method="POST" action="" enctype="multipart/form-data">
+        <h2>Fill out this form!</h2>
+        
+        <label for="age">Real Age</label>
+        <p><input
+            type="number"
+            class="form-control"
+            id="age"
+            name="age"
+            placeholder="Enter your true age"
+          /></p>
+    
+        
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          placeholder="Enter first name"
+        />
+        
+        <br />
+        <input type="file" name="file">
+        <p class="help-block">(Size Limit: 2MB)</p>
+    
+     
+    
+        <h6><input type="checkbox" name="filterName" checked>Permission to save and retain given data</h6>
+        <br />
+  
+        <div>
+        <button type="submit" class="btn btn-primary" >Submit</button>
+        </div>
+        
+      </form>
+    {% endblock %}

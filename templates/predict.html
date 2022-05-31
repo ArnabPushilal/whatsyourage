@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}home{% endblock %} {% block
+    content %}
+    
+    <div class="container">
+        <div class="page-header">
+                <h1>Predictions!</h1>
+                
+                
+            </div><!--END page-header-->
+        <div class="row" id="features">
+                <div class="col-sm-6 feature">
+                        <img src='static/images/{{filen}}' alt="Not Displayed" class="img-circle">
+                </div><!--END feature-->
+
+                <div class="col-sm-6 feature">
+                        <p style=font-size:18px;>The true age is {{true_age}} the predicted age is {{pred_age}}</p>
+                        <p style=font-size:18px;>Looks like the delta is {{pred_age-true_age}}</p>
+                        <p style=font-size:18px>If this did not work well please try some example images! The model 
+                            should perform better overtime as more data is collected!
+                        </p>
+                </div><!--END feature-->
+            </div><!--end features-->
+    </div><!--end container-->
+
+    {% endblock %}
