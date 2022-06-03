@@ -5,6 +5,11 @@ from dataloader import *
 from model import VGGnet
 
 def test_model(image,model,device='cpu'):
+
+    """
+    Tests model for one image
+    
+    """
     
     model.to(device)
     inputs=image
@@ -14,11 +19,17 @@ def test_model(image,model,device='cpu'):
     return round(age_pred.item())
             
 
-def preprocess_image(img_path):
+def preprocess_image(img):
         """
-        Single Image Preprocessing
+        @params:
+        img(cv2): Numpy array img in BGR format
+
+        Returns
+        im(Tensor): Pytorch tensor
+        
         """
-        im = Image.open(img_path)
+        im= Image.fromarray(img)
+        #im=Image.open(img)
         im = im.resize((IM_WIDTH, IM_HEIGHT))
         im = np.array(im) / 255.0
         im=im.T
@@ -30,14 +41,6 @@ def preprocess_image(img_path):
     
         return im
             
-
-if __name__=="__main__":
-
-    im=preprocess_image('ucl-logo_5.png')
-    model=VGGnet()  
-    model.load_state_dict(torch.load('new_model.pt'))
-    age=test_model(im,model)
-    print(age)
 
 
    

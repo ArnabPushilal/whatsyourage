@@ -8,6 +8,26 @@ import torch.optim as optim
 import torch.nn as nn
 
 def train(trainloader,valloader,model,optimizer,criterion,epochs=10,device='cuda',return_val=False,print_=True):
+
+     """
+     Function to train the matrix factorization model given a training set,
+     a validation set, optimizer & a loss function.
+     Chooses best model based on validation loss.
+
+     Input:
+     trainloader(Pytorch dataloader)
+     valloader(Pytorch dataloader)
+     model(Pytorch model)
+     optimizer(Pytorch based optimizer)
+     criterion(loss function)
+     epochs(int): Number of epochs
+     device: 'cpu' or 'cuda'
+     verbose(bool): If true prints metrics
+
+     returns:
+     best_model: Best model according to validation criterion 
+     
+     """
          
      model=model.to(device) 
      val_best=np.inf

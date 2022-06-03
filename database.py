@@ -3,6 +3,14 @@ from PIL import Image
 
 class Images(db.Model):
 
+    """
+    Class for Images of table of
+    first_name,true_age,filename,data
+    created in the form + predicted age
+    from the model
+    
+    """
+
     __tablename__ = 'images'
     
 

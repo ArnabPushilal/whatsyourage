@@ -35,7 +35,7 @@ class VGGnet(nn.Module):
         
     def conv2d_layer(self,in_ch,out_ch,kernel_size=3,padding=1,stride=1):
         """A function creating a layer consisting of convolution, batch normalisation and relu.
-        Args:
+        @params
             in_ch (int): Number of input channels.
             out_ch (int): Number of output channels.
             padding (int, optional): Padding for the convolution stage. Default is 1.

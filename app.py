@@ -8,10 +8,20 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 
 def create_app():
+
+ """
+ Creates flask app and initializes database
+ registers the only blueprint views.
+
+ Returns:
+ Flask Apps
+ 
+ """
  app = Flask(__name__)
+ #Max length limit
  app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
  app.config['SECRET_KEY']='rannasds'
- app.config['UPLOAD_FOLDER']='.\static\images'
+ app.config['UPLOAD_FOLDER']=r'./static/images'
  app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
  db.init_app(app)
@@ -19,6 +29,7 @@ def create_app():
  from views import views
  app.register_blueprint(views,url_prefix='/')
  create_database(app)
+ 
 
  return app
  

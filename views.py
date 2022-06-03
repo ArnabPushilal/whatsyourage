@@ -7,6 +7,7 @@ from flask import current_app
 from inference import preprocess_image,test_model
 import torch
 import os
+from facedetect import face
 from werkzeug.utils import secure_filename
 from app import db
 from database import Images,add_image
@@ -16,12 +17,13 @@ views=Blueprint('views',__name__)
 IMAGE_DIR = 'temp'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-
+#Handle File too large error by redirecting
 @views.errorhandler(413)
 def error413(e):
     flash('File too large')
     return redirect(url_for('views.home'))
 
+#Allowed filenames
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -29,6 +31,13 @@ def allowed_file(filename):
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
+
+    """
+    Function for home page. Checks for 
+    empty filename, age range. Additionally,
+    does the model predcitionss.
+    
+    """
 
     if request.method == 'POST':
         first_name = request.form.get('firstName')
@@ -58,7 +67,15 @@ def home():
         if file and allowed_file(file.filename):
 
          #Convert image to tensor
-         im=preprocess_image(file.stream)
+        
+         im_cv=face(file.stream)
+       
+         #No faces detected
+         if im_cv is None:
+             flash('No faces detected in the image')
+             return redirect(request.url)
+
+         im=preprocess_image(im_cv)
         
          if im.shape[1]!=3:
              
@@ -110,11 +127,22 @@ def home():
 
 @views.route("/example", methods = ["GET"])
 def ex():
+    """
+    Renders view for example images
+    
+    """
 
     return render_template("example.html")
 
 @views.route("/predict", methods = ["GET"])
 def predict():
+
+    """
+
+    Renders view for predictions along with
+    given image
+    
+    """
     
     messages = request.args['messages']
     messages = session['messages'] 
