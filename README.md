@@ -1,4 +1,5 @@
 # Folder structure
+'''bash
 whatsmyageagain
 ├── static
 │   ├── images
@@ -21,3 +22,4 @@ whatsmyageagain
 ├── inference.py
 ├── requirements.txt
 └── train.py
+'''
