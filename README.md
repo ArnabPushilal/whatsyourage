@@ -9,3 +9,10 @@ https://whatsmyageagain.herokuapp.com/
 2. conda activate new
 3. python main.py
 4. Copy paste the shown url onto your browser
+
+### Build the image
+
+1. Clone the repo and cd into the directory containing the dockerfile
+2. Build using 'docker build --tag python-docker-new-8 .'
+3. Run the app using docker run -d -p 5000:5000 python-docker-new-8    
+
