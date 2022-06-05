@@ -16,3 +16,6 @@ https://whatsmyageagain.herokuapp.com/
 2. Build using 'docker build --tag python-docker-new-8 .'
 3. Run the app using docker run -d -p 5000:5000 python-docker-new-8    
 
+### More information on the code in the blog:
+
+https://arnabpushilal.github.io/portfolio/
