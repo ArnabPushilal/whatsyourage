@@ -18,4 +18,4 @@ https://whatsmyageagain.herokuapp.com/
 
 ### More information on the code in the blog:
 
-https://arnabpushilal.github.io/portfolio/
+https://arnabpushilal.framer.website/
